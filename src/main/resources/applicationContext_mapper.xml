@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+		<!-- 读取配置文件 数据库 -->
+		<context:property-placeholder location="classpath:db.properties"/>
+		
+		<!-- 配置数据源 -->
+		<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+			<property name="driverClassName" value="${jdbc.driverClass}"/>
+			<property name="url" value="${jdbc.jdbcUrl}"/>
+			<property name="username" value="${jdbc.user}"/>
+			<property name="password" value="${jdbc.password}"/>
+		</bean>
+		
+		<!-- 配置mybatis -->
+		<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<!-- 设置MyBatis核心配置文件 -->
+			<property name="configLocation" value="classpath:SqlMapConfig.xml" />
+			<property name="dataSource" ref="dataSource"/>
+			<property name="typeAliasesPackage" value="com.find.pojo"/>
+		</bean>
+		
+		<!-- mapper工厂 -->
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<property name="basePackage" value="com.find.mapper"/>
+		</bean>
+		
+		
+</beans>
