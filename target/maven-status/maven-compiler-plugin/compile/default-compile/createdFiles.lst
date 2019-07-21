@@ -1,6 +1,12 @@
 com\find\controller\PublishController.class
+com\find\service\FindGoodService.class
 com\find\pojo\FindOwner.class
+com\find\util\FileUtil.class
+com\find\pojo\FindGood.class
 com\find\service\FindOwnerService.class
 com\find\service\impl\FindOwnerServiceImpl.class
+com\find\mapper\FindGoodMapper.class
+com\find\util\DfsUtil.class
 com\find\controller\FindOwnerController.class
 com\find\mapper\FindOwnerMapper.class
+com\find\service\impl\FindGoodServiceImpl.class

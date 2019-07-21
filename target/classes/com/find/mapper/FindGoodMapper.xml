@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.find.mapper.FindGoodMapper">
+
+    <insert id="insertSubmit" parameterType="com.find.pojo.FindGood">
+    	INSERT INTO find_good 
+    	(user_id,
+    	user_name,
+    	goods_bigkind,
+    	goods_smallkind,
+    	goods_postscrit,
+    	goods_contact,
+    	goods_contact_way,
+    	file_path,
+    	publish_category)
+		VALUES
+		(#{userId},
+		#{userName},
+		#{goodsBigkind},
+		#{goodsSmallkind},
+		#{goodsPostscrit},
+		#{goodsContact},
+		#{goodsContact_way},
+		#{filePath},
+		#{publishCategory})
+    </insert>
+    
+
+</mapper>
