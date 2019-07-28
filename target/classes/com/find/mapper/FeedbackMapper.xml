@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.find.mapper.FeedbackMapper">
+
+    <insert id="insertUpload" parameterType="com.find.pojo.Feedback">
+    	INSERT INTO feedback 
+    	(suggest,
+    	contact,
+    	filepath)
+		VALUES
+		(#{suggest},
+		#{contact},
+		#{filepath})
+    </insert>
+    
+
+</mapper>

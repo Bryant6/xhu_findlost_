@@ -1,29 +1,15 @@
 package com.find.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
-import org.csource.common.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.find.pojo.FindGood;
-import com.find.service.FindGoodService;
+import com.find.pojo.GoodInfo;
+import com.find.service.PublishService;
 import com.find.util.DfsUtil;
 import com.find.util.FileUtil;
 
@@ -32,33 +18,83 @@ import com.find.util.FileUtil;
 public class PublishController {
 
 	@Autowired
-	private FindGoodService findGoodService;
+	private PublishService publishService;
 	
 	private DfsUtil dfsUtil;
 	private FileUtil fileUtil;
 	
 	@RequestMapping("/findGoodsSubmit")
 	@ResponseBody
-	public String submitData(HttpServletRequest request,MultipartFile file) throws Exception {
+	public String submitData(HttpServletRequest request,MultipartFile file) {
 		
 		dfsUtil = new DfsUtil();
 		fileUtil = new FileUtil();
-		String local = fileUtil.upload(file, request);		
+		try {
+			System.out.println("test1");
+			String local = fileUtil.upload(file, request);
+			System.out.println("test2");
+			
+			String goodsSmallkind = request.getParameter("goodsSmallkind");
+			String goodsPostscrit = request.getParameter("goodsPostscrit");
+			String goodsPubtime = null;
+		    String goodsContact = request.getParameter("goodsContact");
+			String goodsContact_way = request.getParameter("goodsContact_way");
+			String goodsPhoto = dfsUtil.Upload(local);
+			String goodsBigkind = request.getParameter("goodsBigkind");
+			String publishCategory = request.getParameter("publishCategory");
+			System.out.println("test3");
+			System.out.println(publishCategory);
+			if(publishCategory == "失物寻找") {
+				goodsPubtime = publishService.selectGoodData();
+				GoodInfo findGood = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
+				publishService.insertSubmitToFindGood(findGood);
+			}else {
+				goodsPubtime = publishService.selectOwnerData();
+				GoodInfo findOwner = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
+				publishService.insertSubmitToFindOwner(findOwner);
+			}
+			return "yes";
+		} catch (Exception e) {
+			System.out.println("出错了");
+			return "no";
+		}		
 		
-		String userId = request.getParameter("userId");
-		String userName = request.getParameter("userName");
-		String goodsBigkind = request.getParameter("goodsBigkind");
-		String goodsSmallkind = request.getParameter("goodsSmallkind");
-		String goodsPostscrit = request.getParameter("goodsPostscrit");
-	    String goodsContact = request.getParameter("goodsContact");
-		String goodsContact_way = request.getParameter("goodsContact_way");
-		String filePath = dfsUtil.Upload(local);
+		
+	}
+	
+	@RequestMapping("/findGoodsSubmitNoImg")
+	public String submitDataNoImg(HttpServletRequest request) {
+		GoodInfo findGood = new GoodInfo();
+		GoodInfo findOwner = new GoodInfo();
+		
 		String publishCategory = request.getParameter("publishCategory");
 		
-		FindGood findGood = new FindGood(userId, userName, goodsBigkind, goodsSmallkind, goodsPostscrit, goodsContact, goodsContact_way, filePath, publishCategory);
-		findGoodService.insertSubmit(findGood);
+		System.out.println(publishCategory);
 		
-		return "yes ";
+		if(publishCategory == "失物寻找") {
+			findGood.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
+			findGood.setGoodsPostscrit(request.getParameter("goodsPostscrit"));
+			findGood.setGoodsPubtime(publishService.selectGoodData());
+			findGood.setGoodsContact(request.getParameter("goodsContact"));
+			findGood.setGoodsContact_way(request.getParameter("goodsContact_way"));
+			findGood.setGoodsBigkind(request.getParameter("goodsBigkind"));
+			
+			publishService.insertSubmitToFindGood(findGood);
+			
+			return "yes";
+		}else {
+			findOwner.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
+			findOwner.setGoodsPostscrit(request.getParameter("goodsPostscrit"));
+			findOwner.setGoodsPubtime(publishService.selectOwnerData());
+			findOwner.setGoodsContact(request.getParameter("goodsContact"));
+			findOwner.setGoodsContact_way(request.getParameter("goodsContact_way"));
+			findOwner.setGoodsBigkind(request.getParameter("goodsBigkind"));
+			
+			publishService.insertSubmitToFindOwner(findOwner);
+			
+			return "yes";
+		}
+
 	}
 	
 }

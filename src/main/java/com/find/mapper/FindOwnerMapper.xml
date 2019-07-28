@@ -5,13 +5,21 @@
 
 <mapper namespace="com.find.mapper.FindOwnerMapper">
 
-    <select id="sortByPubtime" resultType="com.find.pojo.FindOwner">
-        SELECT * from find_owner
-        ORDER BY goods_pubtime
+    <select id="findGoodSortByPubtime" resultType="com.find.pojo.GoodInfo">
+    	select goods_pubtime,goods_smallkind,goods_photo,goods_bigkind
+        from find_owner
+    	order by
+    	goods_pubtime desc 
+    	limit #{page},6
     </select>
-    
-    <select id = "selectData" resultType="String">
-    	select now()
+    <select id="findGoodSortByPubtimeAndKind" resultType="com.find.pojo.GoodInfo">
+    	select goods_pubtime,goods_smallkind,goods_photo,goods_bigkind
+    	from find_owner
+    	where
+    	goods_bigkind=#{kind}
+    	order by
+    	goods_pubtime desc 
+    	limit #{page},6
     </select>
 
 </mapper>

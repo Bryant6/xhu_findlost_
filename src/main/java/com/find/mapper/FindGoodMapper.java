@@ -1,9 +1,14 @@
 package com.find.mapper;
 
-import com.find.pojo.FindGood;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.find.pojo.GoodInfo;
 
 public interface FindGoodMapper {
-
 	
-	public void insertSubmit(FindGood findGood);
+	public List<GoodInfo> findGoodSortByPubtime(@Param("page") Integer page);
+	
+	public List<GoodInfo> findGoodSortByPubtimeAndKind(@Param("kind") String kind,@Param("page") Integer page);
 }

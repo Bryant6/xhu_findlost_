@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.find.mapper.PublishOwnerMapper">
+
+	<insert id="insertSubmit" parameterType="com.find.pojo.GoodInfo">
+    	INSERT INTO find_owner 
+    	(goods_id,
+    	goods_smallkind,
+    	goods_postscrit,
+    	goods_pubtime,
+    	goods_contact,
+    	goods_contact_way,
+    	goods_photo,
+    	goods_bigkind)
+		VALUES
+		(#{goodsId},
+		#{goodsSmallkind},
+		#{goodsPostscrit},
+		#{goodsPubtime},
+		#{goodsContact},
+		#{goodsContact_way},
+		#{goodsPhoto},
+		#{goodsBigkind})
+    </insert>
+
+    <select id = "selectData" resultType="String">
+    	select now()
+    </select>
+
+</mapper>
