@@ -30,6 +30,6 @@ public class FileUtil {
 		File fil = new File(realPath,newName);
 		file.transferTo(fil);
 		
-		return realPath+"/"+ newName;
+		return realPath+"\\"+ newName;
 	}
 }

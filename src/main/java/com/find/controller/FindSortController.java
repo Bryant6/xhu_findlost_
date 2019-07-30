@@ -1,5 +1,6 @@
 package com.find.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +25,10 @@ public class FindSortController {
 
 	@ResponseBody
 	@RequestMapping("/findGoodsSort")
-	public List<GoodInfo> findGoodsSort(HttpServletRequest request){
+	public List<GoodInfo> findGoodsSort(HttpServletRequest request) throws Exception{
 		
 		Integer page = Integer.parseInt(request.getParameter("page"));
-		String kind = request.getParameter("kind");
+		String kind = new String(request.getParameter("kind").getBytes("UTF-8"),"UTF-8");
 		System.out.println(kind);
 		if(kind.equals("全部")) {
 			return goodService.findGoodSortByPubtime(page);
@@ -39,9 +40,9 @@ public class FindSortController {
 	
 	@ResponseBody
 	@RequestMapping("/findOwnerSort")
-	public List<GoodInfo> findOwnerSort(HttpServletRequest request){
+	public List<GoodInfo> findOwnerSort(HttpServletRequest request) throws Exception{
 		Integer page = Integer.parseInt(request.getParameter("page"));
-		String kind = request.getParameter("kind");
+		String kind = new String(request.getParameter("kind").getBytes("UTF-8"),"Utf-8");
 		System.out.println(kind);
 		if(kind.equals("全部")) {
 			return ownerService.findGoodSortByPubtime(page);

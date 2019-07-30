@@ -25,39 +25,42 @@ public class PublishController {
 	
 	@RequestMapping("/findGoodsSubmit")
 	@ResponseBody
-	public String submitData(HttpServletRequest request,MultipartFile file) {
+	public String submitData(HttpServletRequest request,MultipartFile file) throws Exception {
 		
 		dfsUtil = new DfsUtil();
 		fileUtil = new FileUtil();
-		try {
-			System.out.println("test1");
+		
+//			System.out.println("test1");
 			String local = fileUtil.upload(file, request);
-			System.out.println("test2");
+//			System.out.println("test2");
 			
 			String goodsSmallkind = request.getParameter("goodsSmallkind");
 			String goodsPostscrit = request.getParameter("goodsPostscrit");
+//			System.out.println(goodsSmallkind);
 			String goodsPubtime = null;
 		    String goodsContact = request.getParameter("goodsContact");
 			String goodsContact_way = request.getParameter("goodsContact_way");
+//			System.out.println("test3");
+			System.out.println(local);
 			String goodsPhoto = dfsUtil.Upload(local);
+//			System.out.println("test4");
 			String goodsBigkind = request.getParameter("goodsBigkind");
 			String publishCategory = request.getParameter("publishCategory");
-			System.out.println("test3");
+//			System.out.println("test5");
 			System.out.println(publishCategory);
-			if(publishCategory == "失物寻找") {
+			if(publishCategory.equals("失物寻找")) {
 				goodsPubtime = publishService.selectGoodData();
 				GoodInfo findGood = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
 				publishService.insertSubmitToFindGood(findGood);
+				
+				return "yes";
 			}else {
 				goodsPubtime = publishService.selectOwnerData();
 				GoodInfo findOwner = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
 				publishService.insertSubmitToFindOwner(findOwner);
-			}
-			return "yes";
-		} catch (Exception e) {
-			System.out.println("出错了");
-			return "no";
-		}		
+				
+				return "yes";
+			}	
 		
 		
 	}
