@@ -1,10 +1,13 @@
 package com.find.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.find.pojo.Feedback;
@@ -23,6 +26,7 @@ public class FeedbackController {
 	private FileUtil fileUtil;
 	
 	@RequestMapping("/feedback")
+	@ResponseBody
 	public String feedback(HttpServletRequest req,MultipartFile file){
 		
 		dfsUtil = new DfsUtil();
@@ -41,9 +45,11 @@ public class FeedbackController {
 	}
 	
 	@RequestMapping("/feedbackNoImg")
-	public String feedbackNoImg(HttpServletRequest req) {
+	@ResponseBody
+	public String feedbackNoImg(HttpServletRequest req) throws Exception {
 		Feedback feedback = new Feedback();
-		feedback.setSuggest(req.getParameter("suggest"));
+		//feedback.setSuggest(new String(req.getParameter("suggest").getBytes("ISO-8859-1"),"UTF-8"));
+		feedback.setSuggest("suggest");
 		feedback.setContact(req.getParameter("contact"));
 		feedbackService.insertUpload(feedback);
 		return "yes";

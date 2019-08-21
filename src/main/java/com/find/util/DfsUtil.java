@@ -19,7 +19,8 @@ public class DfsUtil {
 	
 	static {
 		try {
-			ClientGlobal.init("D:\\eclipse-workspace\\xhu_findlost\\src\\main\\resources\\fastdfs-client.properties");
+			//ClientGlobal.init("D:\\eclipse-workspace\\xhu_findlost\\src\\main\\resources\\fastdfs-client.properties");
+			ClientGlobal.init("/root/apache-tomcat-8.5.43/webapps/xhu_findlost/WEB-INF/classes/fastdfs-client.properties");
 			trackerClient = new TrackerClient();
 			trackerServer = trackerClient.getConnection();
 			storageClient1 = new StorageClient1(trackerServer, storageServer);

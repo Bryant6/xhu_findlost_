@@ -13,13 +13,13 @@ public class GoodInfo {
 	//物品小类
 	private String goodsSmallkind;
 	//发布附言
-	private String goodsPostscrit;
+	private String goodsPostscript;
 	//发布时间
 	private String goodsPubtime;	
 	//联系号码
 	private String goodsContact;
 	//联系方式
-	private String goodsContact_way;
+	private String goodsContactWay;
 	//图片路径
 	private String goodsPhoto;
 	//物品大类
@@ -29,15 +29,15 @@ public class GoodInfo {
 		super();
 	}
 
-	public GoodInfo(String goodsId, String goodsSmallkind, String goodsPostscrit, String goodsPubtime,
-			String goodsContact, String goodsContact_way, String goodsPhoto, String goodsBigkind) {
+	public GoodInfo(String goodsId, String goodsSmallkind, String goodsPostscript, String goodsPubtime,
+			String goodsContact, String goodsContactWay, String goodsPhoto, String goodsBigkind) {
 		super();
 		this.goodsId = goodsId;
 		this.goodsSmallkind = goodsSmallkind;
-		this.goodsPostscrit = goodsPostscrit;
+		this.goodsPostscript = goodsPostscript;
 		this.goodsPubtime = goodsPubtime;
 		this.goodsContact = goodsContact;
-		this.goodsContact_way = goodsContact_way;
+		this.goodsContactWay = goodsContactWay;
 		this.goodsPhoto = goodsPhoto;
 		this.goodsBigkind = goodsBigkind;
 	}
@@ -58,12 +58,12 @@ public class GoodInfo {
 		this.goodsSmallkind = goodsSmallkind;
 	}
 
-	public String getGoodsPostscrit() {
-		return goodsPostscrit;
+	public String getGoodsPostscript() {
+		return goodsPostscript;
 	}
 
-	public void setGoodsPostscrit(String goodsPostscrit) {
-		this.goodsPostscrit = goodsPostscrit;
+	public void setGoodsPostscript(String goodsPostscript) {
+		this.goodsPostscript = goodsPostscript;
 	}
 
 	public String getGoodsPubtime() {
@@ -82,12 +82,12 @@ public class GoodInfo {
 		this.goodsContact = goodsContact;
 	}
 
-	public String getGoodsContact_way() {
-		return goodsContact_way;
+	public String getGoodsContactWay() {
+		return goodsContactWay;
 	}
 
-	public void setGoodsContact_way(String goodsContact_way) {
-		this.goodsContact_way = goodsContact_way;
+	public void setGoodsContactWay(String goodsContactWay) {
+		this.goodsContactWay = goodsContactWay;
 	}
 
 	public String getGoodsPhoto() {

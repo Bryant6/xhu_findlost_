@@ -1,8 +1,11 @@
 com\find\controller\PublishController.class
+com\find\mapper\GetInfoMapper.class
+com\find\controller\GetInfoController.class
 com\find\service\impl\FeedbackServiceImpl.class
 com\find\controller\FeedbackController.class
 com\find\pojo\GoodInfo.class
 com\find\service\impl\FindOwnerServiceImpl.class
+com\find\service\impl\GetInfoServiceImpl.class
 com\find\util\DfsUtil.class
 com\find\mapper\FindOwnerMapper.class
 com\find\service\impl\FindGoodServiceImpl.class
@@ -14,6 +17,7 @@ com\find\pojo\Feedback.class
 com\find\util\FileUtil.class
 com\find\mapper\PublishGoodMapper.class
 com\find\service\FindOwnerService.class
+com\find\service\GetInfoService.class
 com\find\mapper\FindGoodMapper.class
 com\find\service\impl\PublishServiceImpl.class
 com\find\mapper\PublishOwnerMapper.class

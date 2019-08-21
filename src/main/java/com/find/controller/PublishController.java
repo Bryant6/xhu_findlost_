@@ -1,5 +1,8 @@
 package com.find.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,34 +33,38 @@ public class PublishController {
 		dfsUtil = new DfsUtil();
 		fileUtil = new FileUtil();
 		
-//			System.out.println("test1");
 			String local = fileUtil.upload(file, request);
-//			System.out.println("test2");
-			
+
+			String id = UUID.randomUUID().toString();
+			String goodsId=id.replace("-", "");
 			String goodsSmallkind = request.getParameter("goodsSmallkind");
-			String goodsPostscrit = request.getParameter("goodsPostscrit");
-//			System.out.println(goodsSmallkind);
+			String goodsPostscript = request.getParameter("goodsPostscript");
+
 			String goodsPubtime = null;
 		    String goodsContact = request.getParameter("goodsContact");
-			String goodsContact_way = request.getParameter("goodsContact_way");
-//			System.out.println("test3");
+			String goodsContactWay = request.getParameter("goodsContactWay");
+
 			System.out.println(local);
 			String goodsPhoto = dfsUtil.Upload(local);
-//			System.out.println("test4");
+
 			String goodsBigkind = request.getParameter("goodsBigkind");
 			String publishCategory = request.getParameter("publishCategory");
-//			System.out.println("test5");
+
 			System.out.println(publishCategory);
 			if(publishCategory.equals("失物寻找")) {
 				goodsPubtime = publishService.selectGoodData();
-				GoodInfo findGood = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
+				GoodInfo findGood = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind);
 				publishService.insertSubmitToFindGood(findGood);
+				
+				System.out.println(findGood.getGoodsId());
 				
 				return "yes";
 			}else {
 				goodsPubtime = publishService.selectOwnerData();
-				GoodInfo findOwner = new GoodInfo(null,goodsSmallkind, goodsPostscrit, goodsPubtime, goodsContact, goodsContact_way, goodsPhoto, goodsBigkind);
+				GoodInfo findOwner = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind);
 				publishService.insertSubmitToFindOwner(findOwner);
+				
+				System.out.println(findOwner.getGoodsId());
 				
 				return "yes";
 			}	
@@ -66,34 +73,49 @@ public class PublishController {
 	}
 	
 	@RequestMapping("/findGoodsSubmitNoImg")
-	public String submitDataNoImg(HttpServletRequest request) {
+	@ResponseBody
+	public String submitDataNoImg(HttpServletRequest request) throws Exception {
 		GoodInfo findGood = new GoodInfo();
 		GoodInfo findOwner = new GoodInfo();
 		
+		String id = UUID.randomUUID().toString();
+		String goodsId=id.replace("-", "");
+		
 		String publishCategory = request.getParameter("publishCategory");
+		
+		String goodsPhoto = "group1/M00/00/00/rBAAEV1c5VWAALgYAABAcXnlud8008.jpg";
 		
 		System.out.println(publishCategory);
 		
-		if(publishCategory == "失物寻找") {
+		if(publishCategory.equals("失物寻找")) {
+			findGood.setGoodsId(goodsId);
 			findGood.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
-			findGood.setGoodsPostscrit(request.getParameter("goodsPostscrit"));
+			findGood.setGoodsPostscript(request.getParameter("goodsPostscript"));
 			findGood.setGoodsPubtime(publishService.selectGoodData());
 			findGood.setGoodsContact(request.getParameter("goodsContact"));
-			findGood.setGoodsContact_way(request.getParameter("goodsContact_way"));
+			findGood.setGoodsContactWay(request.getParameter("goodsContactWay"));
+			findGood.setGoodsPhoto(goodsPhoto);
 			findGood.setGoodsBigkind(request.getParameter("goodsBigkind"));
 			
 			publishService.insertSubmitToFindGood(findGood);
 			
+			System.out.println(findGood.getGoodsId());
+			
 			return "yes";
 		}else {
+			findGood.setGoodsId(goodsId);
 			findOwner.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
-			findOwner.setGoodsPostscrit(request.getParameter("goodsPostscrit"));
+			findOwner.setGoodsPostscript(request.getParameter("goodsPostscript"));
 			findOwner.setGoodsPubtime(publishService.selectOwnerData());
 			findOwner.setGoodsContact(request.getParameter("goodsContact"));
-			findOwner.setGoodsContact_way(request.getParameter("goodsContact_way"));
+			findOwner.setGoodsContactWay(request.getParameter("goodsContactWay"));
+			findOwner.setGoodsPhoto(goodsPhoto);
 			findOwner.setGoodsBigkind(request.getParameter("goodsBigkind"));
 			
+			
 			publishService.insertSubmitToFindOwner(findOwner);
+			
+			System.out.println(findOwner.getGoodsId());
 			
 			return "yes";
 		}

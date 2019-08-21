@@ -25,11 +25,13 @@ public class FindSortController {
 
 	@ResponseBody
 	@RequestMapping("/findGoodsSort")
-	public List<GoodInfo> findGoodsSort(HttpServletRequest request) throws Exception{
+	public List<GoodInfo> findGoodsSort(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		Integer page = Integer.parseInt(request.getParameter("page"));
-		String kind = new String(request.getParameter("kind").getBytes("UTF-8"),"UTF-8");
+//		String kind = new String(request.getParameter("kind").getBytes("ISO-8859-1"),"UTF-8");
+		String kind = request.getParameter("kind");
 		System.out.println(kind);
+
 		if(kind.equals("全部")) {
 			return goodService.findGoodSortByPubtime(page);
 		}else {
@@ -42,7 +44,8 @@ public class FindSortController {
 	@RequestMapping("/findOwnerSort")
 	public List<GoodInfo> findOwnerSort(HttpServletRequest request) throws Exception{
 		Integer page = Integer.parseInt(request.getParameter("page"));
-		String kind = new String(request.getParameter("kind").getBytes("UTF-8"),"Utf-8");
+		String kind = request.getParameter("kind");
+//		String kind = new String(request.getParameter("kind").getBytes("ISO-8859-1"),"UTF-8");
 		System.out.println(kind);
 		if(kind.equals("全部")) {
 			return ownerService.findGoodSortByPubtime(page);
