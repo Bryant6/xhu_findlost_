@@ -8,7 +8,4 @@ public interface PublishService {
 	
 	public void insertSubmitToFindOwner(GoodInfo findGood);
 	
-	public String selectGoodData();
-	
-	public String selectOwnerData();
 }

@@ -6,5 +6,4 @@ public interface PublishOwnerMapper {
 
 	public void insertSubmit(GoodInfo findGood);
 	
-	public String selectData();
 }

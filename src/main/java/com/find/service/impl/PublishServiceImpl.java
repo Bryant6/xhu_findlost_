@@ -27,16 +27,5 @@ public class PublishServiceImpl implements PublishService {
 		// TODO Auto-generated method stub
 		ownerMapper.insertSubmit(findOwner);
 	}
-	@Override
-	public String selectGoodData() {
-		// TODO Auto-generated method stub
-		return goodMapper.selectData();
-	}
-	@Override
-	public String selectOwnerData() {
-		// TODO Auto-generated method stub
-		return ownerMapper.selectData();
-	}
-	
 
 }

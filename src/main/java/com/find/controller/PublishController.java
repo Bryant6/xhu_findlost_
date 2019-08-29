@@ -1,12 +1,15 @@
 package com.find.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +29,7 @@ public class PublishController {
 	private DfsUtil dfsUtil;
 	private FileUtil fileUtil;
 	
-	@RequestMapping("/findGoodsSubmit")
+	@PostMapping("/findGoodsSubmit")
 	@ResponseBody
 	public String submitData(HttpServletRequest request,MultipartFile file) throws Exception {
 		
@@ -40,7 +43,8 @@ public class PublishController {
 			String goodsSmallkind = request.getParameter("goodsSmallkind");
 			String goodsPostscript = request.getParameter("goodsPostscript");
 
-			String goodsPubtime = null;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+			String goodsPubtime = sdf.format(new Date());
 		    String goodsContact = request.getParameter("goodsContact");
 			String goodsContactWay = request.getParameter("goodsContactWay");
 
@@ -49,19 +53,18 @@ public class PublishController {
 
 			String goodsBigkind = request.getParameter("goodsBigkind");
 			String publishCategory = request.getParameter("publishCategory");
+			String openid = request.getParameter("openid");
 
 			System.out.println(publishCategory);
 			if(publishCategory.equals("失物寻找")) {
-				goodsPubtime = publishService.selectGoodData();
-				GoodInfo findGood = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind);
+				GoodInfo findGood = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,openid);
 				publishService.insertSubmitToFindGood(findGood);
 				
 				System.out.println(findGood.getGoodsId());
 				
 				return "yes";
 			}else {
-				goodsPubtime = publishService.selectOwnerData();
-				GoodInfo findOwner = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind);
+				GoodInfo findOwner = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,openid);
 				publishService.insertSubmitToFindOwner(findOwner);
 				
 				System.out.println(findOwner.getGoodsId());
@@ -72,7 +75,7 @@ public class PublishController {
 		
 	}
 	
-	@RequestMapping("/findGoodsSubmitNoImg")
+	@PostMapping("/findGoodsSubmitNoImg")
 	@ResponseBody
 	public String submitDataNoImg(HttpServletRequest request) throws Exception {
 		GoodInfo findGood = new GoodInfo();
@@ -87,15 +90,19 @@ public class PublishController {
 		
 		System.out.println(publishCategory);
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+		String goodsPubtime = sdf.format(new Date());
+		
 		if(publishCategory.equals("失物寻找")) {
 			findGood.setGoodsId(goodsId);
 			findGood.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
 			findGood.setGoodsPostscript(request.getParameter("goodsPostscript"));
-			findGood.setGoodsPubtime(publishService.selectGoodData());
+			findGood.setGoodsPubtime(goodsPubtime);
 			findGood.setGoodsContact(request.getParameter("goodsContact"));
 			findGood.setGoodsContactWay(request.getParameter("goodsContactWay"));
 			findGood.setGoodsPhoto(goodsPhoto);
 			findGood.setGoodsBigkind(request.getParameter("goodsBigkind"));
+			findGood.setOpenid(request.getParameter("openid"));
 			
 			publishService.insertSubmitToFindGood(findGood);
 			
@@ -106,12 +113,12 @@ public class PublishController {
 			findGood.setGoodsId(goodsId);
 			findOwner.setGoodsSmallkind(request.getParameter("goodsSmallkind"));
 			findOwner.setGoodsPostscript(request.getParameter("goodsPostscript"));
-			findOwner.setGoodsPubtime(publishService.selectOwnerData());
+			findOwner.setGoodsPubtime(goodsPubtime);
 			findOwner.setGoodsContact(request.getParameter("goodsContact"));
 			findOwner.setGoodsContactWay(request.getParameter("goodsContactWay"));
 			findOwner.setGoodsPhoto(goodsPhoto);
 			findOwner.setGoodsBigkind(request.getParameter("goodsBigkind"));
-			
+			findOwner.setOpenid(request.getParameter("openid"));
 			
 			publishService.insertSubmitToFindOwner(findOwner);
 			

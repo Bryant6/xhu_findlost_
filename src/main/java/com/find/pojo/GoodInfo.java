@@ -25,12 +25,14 @@ public class GoodInfo {
 	//物品大类
 	private String goodsBigkind;
 	
+	private String openid;
+	
 	public GoodInfo() {
 		super();
 	}
 
 	public GoodInfo(String goodsId, String goodsSmallkind, String goodsPostscript, String goodsPubtime,
-			String goodsContact, String goodsContactWay, String goodsPhoto, String goodsBigkind) {
+			String goodsContact, String goodsContactWay, String goodsPhoto, String goodsBigkind,String openid) {
 		super();
 		this.goodsId = goodsId;
 		this.goodsSmallkind = goodsSmallkind;
@@ -40,6 +42,7 @@ public class GoodInfo {
 		this.goodsContactWay = goodsContactWay;
 		this.goodsPhoto = goodsPhoto;
 		this.goodsBigkind = goodsBigkind;
+		this.openid = openid;
 	}
 
 	public String getGoodsId() {
@@ -104,6 +107,14 @@ public class GoodInfo {
 
 	public void setGoodsBigkind(String goodsBigkind) {
 		this.goodsBigkind = goodsBigkind;
+	}
+
+	public String getOpenid() {
+		return openid;
+	}
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
 	}
 
 	

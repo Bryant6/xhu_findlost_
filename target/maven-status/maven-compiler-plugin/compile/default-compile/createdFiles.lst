@@ -1,4 +1,5 @@
 com\find\controller\PublishController.class
+com\find\pojo\StuInfo.class
 com\find\mapper\GetInfoMapper.class
 com\find\controller\GetInfoController.class
 com\find\service\impl\FeedbackServiceImpl.class
@@ -15,10 +16,13 @@ com\find\controller\FindSortController.class
 com\find\mapper\FeedbackMapper.class
 com\find\pojo\Feedback.class
 com\find\util\FileUtil.class
+com\find\service\StuInfoService.class
 com\find\mapper\PublishGoodMapper.class
 com\find\service\FindOwnerService.class
 com\find\service\GetInfoService.class
 com\find\mapper\FindGoodMapper.class
+com\find\mapper\StuInfoMapper.class
+com\find\service\impl\StuInfoServiceImpl.class
 com\find\service\impl\PublishServiceImpl.class
 com\find\mapper\PublishOwnerMapper.class
 com\find\service\PublishService.class

@@ -6,5 +6,4 @@ public interface PublishGoodMapper {
 
 	public void insertSubmit(GoodInfo findGood);
 	
-	public String selectData();
 }

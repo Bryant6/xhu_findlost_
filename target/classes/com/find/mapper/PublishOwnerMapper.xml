@@ -14,7 +14,8 @@
     	goods_contact,
     	goods_contact_way,
     	goods_photo,
-    	goods_bigkind)
+    	goods_bigkind,
+    	openid)
 		VALUES
 		(#{goodsId},
 		#{goodsSmallkind},
@@ -23,11 +24,8 @@
 		#{goodsContact},
 		#{goodsContactWay},
 		#{goodsPhoto},
-		#{goodsBigkind})
+		#{goodsBigkind},
+		#{openid})
     </insert>
-
-    <select id = "selectData" resultType="String">
-    	select now()
-    </select>
 
 </mapper>
