@@ -67,13 +67,20 @@ public class FeedbackController {
 	@ResponseBody
 	public String stuInfo(HttpServletRequest req) {
 		try {
-			System.out.println("StuInfo"+ req.getParameter("stuClass"));
-			String id = UUID.randomUUID().toString();
-			String openid=id.replace("-", "");
-			StuInfo stuInfo = new StuInfo(req.getParameter("stuName"),req.getParameter("stuNum"),req.getParameter("stuClass"),req.getParameter("stuAcademy"),req.getParameter("stuMajor"),openid);
-			stuInfoService.insertStuInfo(stuInfo);
-			
-			return "yes";
+			Integer uploadTimes = Integer.parseInt(req.getParameter("uploadTimes"));
+			if(uploadTimes == 1) {
+				System.out.println("insertStuInfo"+ req.getParameter("stuClass"));
+				String id = UUID.randomUUID().toString();
+				String openid=id.replace("-", "");
+				StuInfo stuInfo = new StuInfo(req.getParameter("stuName"),req.getParameter("stuNum"),req.getParameter("stuClass"),req.getParameter("stuAcademy"),req.getParameter("stuMajor"),openid,uploadTimes);
+				stuInfoService.insertStuInfo(stuInfo);
+				return "yes";
+			}else {
+				String openid = req.getParameter("openid");
+				StuInfo stuInfo  =new StuInfo(req.getParameter("stuName"),req.getParameter("stuNum"),req.getParameter("stuClass"),req.getParameter("stuAcademy"),req.getParameter("stuMajor"),openid,uploadTimes);
+				stuInfoService.updateStuInfo(stuInfo, openid);
+				return "yes";
+			}
 		} catch (Exception e) {
 			return "no";
 		}

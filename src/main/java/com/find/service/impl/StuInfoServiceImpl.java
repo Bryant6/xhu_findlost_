@@ -19,4 +19,10 @@ public class StuInfoServiceImpl implements StuInfoService {
 		stuInfoMapper.insertStuInfo(stuInfo);
 	}
 
+	@Override
+	public void updateStuInfo(StuInfo stuInfo, String openid) {
+		// TODO Auto-generated method stub
+		stuInfoMapper.updateStuInfo(stuInfo, openid);
+	}
+
 }

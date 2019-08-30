@@ -21,14 +21,15 @@ public class StuInfo {
 	private String stuMajor;
 	
 	private String openid;
-	
+	//上传次数
+	private Integer uploadTimes;
 	
 	public StuInfo() {
 		super();
 	}
 
 
-	public StuInfo(String stuName, String stuNum, String stuClass, String stuAcademy, String stuMajor,String openid) {
+	public StuInfo(String stuName, String stuNum, String stuClass, String stuAcademy, String stuMajor,String openid,Integer uploadTimes) {
 		super();
 		this.stuName = stuName;
 		this.stuNum = stuNum;
@@ -36,6 +37,7 @@ public class StuInfo {
 		this.stuAcademy = stuAcademy;
 		this.stuMajor = stuMajor;
 		this.openid = openid;
+		this.uploadTimes = uploadTimes;
 	}
 
 
@@ -96,6 +98,16 @@ public class StuInfo {
 
 	public void setOpenid(String openid) {
 		this.openid = openid;
+	}
+
+
+	public Integer getUploadTimes() {
+		return uploadTimes;
+	}
+
+
+	public void setUploadTimes(Integer uploadTimes) {
+		this.uploadTimes = uploadTimes;
 	}
 	
 	

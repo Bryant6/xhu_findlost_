@@ -5,21 +5,37 @@
 
 <mapper namespace="com.find.mapper.StuInfoMapper">
     
-    <insert id="insertStuInfo" parameterType="com.find.pojo.StuInfo">
+    <insert id="insertStuInfo" parameterType="com.find.pojo.StuInfo" >
     	INSERT INTO stu_info 
     	(stu_name,
     	stu_num,
     	stu_class,
     	stu_academy,
     	stu_major,
-    	openid)
+    	openid,
+    	upload_times)
 		VALUES
 		(#{stuName},
 		#{stuNum},
 		#{stuClass},
 		#{stuAcademy},
 		#{stuMajor},
-		#{openid})
+		#{openid},
+		#{uploadTimes})
     </insert>
+    
+    <update id="updateStuInfo" parameterType="com.find.pojo.StuInfo">
+    	update stu_info
+    	set
+    	stu_name=#{stuName},
+    	stu_num=#{stuNum},
+    	stu_class=#{stuClass},
+    	stu_academy=#{stuAcademy},
+    	stu_major=#{stuMajor},
+    	openid=#{openid},
+    	upload_times=#{uploadTimes}
+    	where
+    	openid=#{openid}
+    </update>
 
 </mapper>
