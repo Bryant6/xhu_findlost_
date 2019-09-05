@@ -53,18 +53,19 @@ public class PublishController {
 
 			String goodsBigkind = request.getParameter("goodsBigkind");
 			String publishCategory = request.getParameter("publishCategory");
+			String goodsPlace = request.getParameter("goodsPlace");
 			String openid = request.getParameter("openid");
 
 			System.out.println(publishCategory);
 			if(publishCategory.equals("失物寻找")) {
-				GoodInfo findGood = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,openid);
+				GoodInfo findGood = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,goodsPlace,openid,publishCategory);
 				publishService.insertSubmitToFindGood(findGood);
 				
 				System.out.println(findGood.getGoodsId());
 				
 				return "yes";
 			}else {
-				GoodInfo findOwner = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,openid);
+				GoodInfo findOwner = new GoodInfo(goodsId,goodsSmallkind, goodsPostscript, goodsPubtime, goodsContact, goodsContactWay, goodsPhoto, goodsBigkind,goodsPlace,openid,publishCategory);
 				publishService.insertSubmitToFindOwner(findOwner);
 				
 				System.out.println(findOwner.getGoodsId());
@@ -102,7 +103,9 @@ public class PublishController {
 			findGood.setGoodsContactWay(request.getParameter("goodsContactWay"));
 			findGood.setGoodsPhoto(goodsPhoto);
 			findGood.setGoodsBigkind(request.getParameter("goodsBigkind"));
+			findGood.setGoodsPlace(request.getParameter("goodsPlace"));
 			findGood.setOpenid(request.getParameter("openid"));
+			findGood.setKind(request.getParameter("publishCategory"));
 			
 			publishService.insertSubmitToFindGood(findGood);
 			
@@ -118,7 +121,9 @@ public class PublishController {
 			findOwner.setGoodsContactWay(request.getParameter("goodsContactWay"));
 			findOwner.setGoodsPhoto(goodsPhoto);
 			findOwner.setGoodsBigkind(request.getParameter("goodsBigkind"));
+			findOwner.setGoodsPlace(request.getParameter("goodsPlace"));
 			findOwner.setOpenid(request.getParameter("openid"));
+			findOwner.setKind(request.getParameter("publishCategory"));
 			
 			publishService.insertSubmitToFindOwner(findOwner);
 			

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.find.mapper.HistoryMapper">
+    
+    <select id="findHistoryById" resultType="com.find.pojo.GoodInfo" >
+    	SELECT 
+		goods_id,
+		goods_bigkind,
+		goods_smallkind,
+		kind,
+		goods_pubtime,
+		goods_photo
+		FROM find_goods
+		WHERE
+		find_goods.openid = #{openid}
+		UNION
+		SELECT
+		goods_id,
+		goods_bigkind,
+		goods_smallkind,
+		kind,
+		goods_pubtime,
+		goods_photo
+		FROM find_owner
+		WHERE
+		find_owner.openid = #{openid}
+    </select>
+    
+
+</mapper>

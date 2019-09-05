@@ -13,7 +13,8 @@
     	goods_contact,
     	goods_contact_way,
     	goods_photo,
-    	goods_bigkind
+    	goods_bigkind,
+    	goods_place
     	from find_goods where goods_id=#{id}
     </select>
     <select id="getInfoByIdOwner" resultType="com.find.pojo.GoodInfo">
@@ -24,7 +25,8 @@
     	goods_contact,
     	goods_contact_way,
     	goods_photo,
-    	goods_bigkind
+    	goods_bigkind,
+    	goods_place
     	from find_owner where goods_id=#{id}
     </select>
 

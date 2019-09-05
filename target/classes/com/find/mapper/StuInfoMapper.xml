@@ -24,7 +24,7 @@
 		#{uploadTimes})
     </insert>
     
-    <update id="updateStuInfo" parameterType="com.find.pojo.StuInfo">
+    <update id="updateStuInfo" parameterType="String">
     	update stu_info
     	set
     	stu_name=#{stuName},

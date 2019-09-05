@@ -4,9 +4,12 @@ D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\FindGoodService
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\PublishService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\StuInfoService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\controller\GetInfoController.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\HistoryService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\StuInfoServiceImpl.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\GetInfoService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\controller\FeedbackController.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\MessageMapper.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\HistoryServiceImpl.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\controller\PublishController.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\pojo\StuInfo.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\FindOwnerServiceImpl.java
@@ -20,9 +23,13 @@ D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\FindGoodMapper.j
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\pojo\GoodInfo.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\FeedbackService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\FindGoodServiceImpl.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\pojo\Message.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\MessageServiceImpl.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\FindOwnerMapper.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\GetInfoMapper.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\util\DfsUtil.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\pojo\Feedback.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\impl\PublishServiceImpl.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\service\MessageService.java
 D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\PublishGoodMapper.java
+D:\eclipse-workspace\xhu_findlost\src\main\java\com\find\mapper\HistoryMapper.java

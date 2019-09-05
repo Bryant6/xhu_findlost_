@@ -8,6 +8,8 @@ package com.find.pojo;
 
 public class Feedback {
 
+	//ID 
+	private String openid;
 	//用户建议
 	private String suggest;
 	//用户联系方式
@@ -21,11 +23,24 @@ public class Feedback {
 	}
 
 
-	public Feedback(String suggest, String contact, String filepath) {
+	public Feedback(String openid,String suggest, String contact, String filepath) {
 		super();
+		this.openid = openid;
 		this.suggest = suggest;
 		this.contact = contact;
 		this.filepath = filepath;
+	}
+
+
+	
+	
+	public String getOpenid() {
+		return openid;
+	}
+
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
 	}
 
 

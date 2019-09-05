@@ -15,7 +15,9 @@
     	goods_contact_way,
     	goods_photo,
     	goods_bigkind,
-    	openid)
+    	goods_place,
+    	openid,
+    	kind)
 		VALUES
 		(#{goodsId},
 		#{goodsSmallkind},
@@ -25,7 +27,9 @@
 		#{goodsContactWay},
 		#{goodsPhoto},
 		#{goodsBigkind},
-		#{openid})
+		#{goodsPlace},
+		#{openid},
+		#{kind})
     </insert>
 
 </mapper>

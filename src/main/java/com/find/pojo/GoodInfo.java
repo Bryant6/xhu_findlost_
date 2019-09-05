@@ -24,15 +24,19 @@ public class GoodInfo {
 	private String goodsPhoto;
 	//物品大类
 	private String goodsBigkind;
+	//物品丢失地点
+	private String goodsPlace;
 	
 	private String openid;
+	
+	private String kind;
 	
 	public GoodInfo() {
 		super();
 	}
 
 	public GoodInfo(String goodsId, String goodsSmallkind, String goodsPostscript, String goodsPubtime,
-			String goodsContact, String goodsContactWay, String goodsPhoto, String goodsBigkind,String openid) {
+			String goodsContact, String goodsContactWay, String goodsPhoto, String goodsBigkind,String goodsPlace,String openid,String kind) {
 		super();
 		this.goodsId = goodsId;
 		this.goodsSmallkind = goodsSmallkind;
@@ -42,7 +46,9 @@ public class GoodInfo {
 		this.goodsContactWay = goodsContactWay;
 		this.goodsPhoto = goodsPhoto;
 		this.goodsBigkind = goodsBigkind;
+		this.goodsPlace = goodsPlace;
 		this.openid = openid;
+		this.kind = kind;
 	}
 
 	public String getGoodsId() {
@@ -108,6 +114,16 @@ public class GoodInfo {
 	public void setGoodsBigkind(String goodsBigkind) {
 		this.goodsBigkind = goodsBigkind;
 	}
+	
+	
+
+	public String getGoodsPlace() {
+		return goodsPlace;
+	}
+
+	public void setGoodsPlace(String goodsPlace) {
+		this.goodsPlace = goodsPlace;
+	}
 
 	public String getOpenid() {
 		return openid;
@@ -115,6 +131,22 @@ public class GoodInfo {
 
 	public void setOpenid(String openid) {
 		this.openid = openid;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	@Override
+	public String toString() {
+		return "GoodInfo [goodsId=" + goodsId + ", goodsSmallkind=" + goodsSmallkind + ", goodsPostscript="
+				+ goodsPostscript + ", goodsPubtime=" + goodsPubtime + ", goodsContact=" + goodsContact
+				+ ", goodsContactWay=" + goodsContactWay + ", goodsPhoto=" + goodsPhoto + ", goodsBigkind="
+				+ goodsBigkind + ", goodsPlace=" + goodsPlace + ", openid=" + openid + ", kind=" + kind + "]";
 	}
 
 	

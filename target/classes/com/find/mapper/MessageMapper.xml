@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.find.mapper.MessageMapper">
+    
+    <select id="selectById" resultType="com.find.pojo.Message">
+    	select msg_title,msg_time,msg_content
+    	from message
+    	where openid = #{openid}
+    	order by
+    	msg_time desc 
+    </select>
+
+</mapper>

@@ -7,11 +7,13 @@
 
     <insert id="insertUpload" parameterType="com.find.pojo.Feedback">
     	INSERT INTO feedback 
-    	(suggest,
+    	(openid,
+    	suggest,
     	contact,
     	filepath)
 		VALUES
-		(#{suggest},
+		(#{openid},
+		#{suggest},
 		#{contact},
 		#{filepath})
     </insert>
