@@ -24,6 +24,13 @@ import com.find.service.StuInfoService;
 import com.find.util.DfsUtil;
 import com.find.util.FileUtil;
 
+/**
+ * personal个人面板接口
+ * @author wang
+ * 
+ *
+ */
+
 @Controller
 @RequestMapping("/personal")
 public class FeedbackController {
@@ -82,8 +89,7 @@ public class FeedbackController {
 			System.out.println("上传次数"+ uploadTimes);
 			if(uploadTimes == 1) {
 				System.out.println("insertStuInfo"+ req.getParameter("stuClass"));
-				String id = UUID.randomUUID().toString();
-				String openid=id.replace("-", "");
+				String openid=req.getParameter("openid");
 				StuInfo stuInfo = new StuInfo(req.getParameter("stuName"),req.getParameter("stuNum"),req.getParameter("stuClass"),req.getParameter("stuAcademy"),req.getParameter("stuMajor"),openid,uploadTimes);
 				stuInfoService.insertStuInfo(stuInfo);
 				return "yes";
