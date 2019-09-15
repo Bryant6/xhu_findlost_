@@ -19,7 +19,7 @@
     	goods_bigkind=#{kind}
     	order by
     	goods_pubtime desc 
-    	limit #{page},6
+    	limit #{page},10
     </select>
 
 </mapper>
