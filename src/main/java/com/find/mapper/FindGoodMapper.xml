@@ -10,7 +10,7 @@
     	from find_goods
     	order by
     	goods_pubtime desc 
-    	limit #{page},6
+    	limit #{page},10
     </select>
     <select id="findGoodSortByPubtimeAndKind" resultType="com.find.pojo.GoodInfo">
     	select goods_id,goods_pubtime,goods_smallkind,goods_photo,goods_bigkind,goods_place
