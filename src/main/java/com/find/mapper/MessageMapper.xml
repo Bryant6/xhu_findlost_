@@ -9,8 +9,12 @@
     	select msg_title,msg_time,msg_content
     	from message
     	where openid = #{openid}
+    	union
+    	select msg_title,msg_time,msg_content
+    	from sys_message
     	order by
     	msg_time desc 
     </select>
+    
 
 </mapper>

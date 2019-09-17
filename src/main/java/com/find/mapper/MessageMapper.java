@@ -10,4 +10,5 @@ public interface MessageMapper {
 	
 	public List<Message> selectById(@Param("openid") String openid);
 
+
 }
